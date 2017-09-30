@@ -1,5 +1,6 @@
-<h1 align="center">Eslint Config ES5 Only</h1>
-<h5 align="center">Sometimes you don't want the new stuff. 📟</h5>
+<h1 align="center">Ecma V </h1>
+<h5 align="center">Check files version of ecmascript with simple scripts 🏆</h5>
+
 ----
 
-_Eslint Config ES5 Only_ logs errors if ES6 code is in a file. This can be good for failing builds if ES6 Modules find their way into an ES5 file. 
+**Ecma V** errors if the specified version of Ecmascript is incorrect with Javascript file(s). This is important in a modular bundled world. 

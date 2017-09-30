@@ -4,7 +4,8 @@
   "description": "A plugin that only errors for new features that are not supported by es5",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "lint": "eslint index.js --fix",
+    "test": "node index.js --ecma5 --files ./sample-tests/*.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "eslint": ">= 3"
   },
   "devDependencies": {
-    "jest": "^21.2.1"
+    "acorn": "^5.1.2",
+    "glob": "^7.1.2"
   }
 }
