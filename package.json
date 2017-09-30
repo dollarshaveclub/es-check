@@ -1,0 +1,26 @@
+{
+    "name": "eslint-config-es5-only",
+    "version": "0.0.1",
+    "description": "A plugin that only errors for new features that are not supported by es5",
+    "main": "index.js",
+    "scripts": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dollarshaveclub/eslint-config-es5-only.git"
+    },
+    "keywords": [
+        "eslint",
+        "eslintconfig"
+    ],
+    "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/dollarshaveclub/eslint-config-es5-only/issues"
+    },
+    "homepage": "https://github.com/dollarshaveclub/eslint-config-es5-only#readme",
+    "peerDependencies": {
+        "eslint": ">= 3"
+    }
+}
