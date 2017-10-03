@@ -19,16 +19,14 @@ prog
   .version(pkg.version)
   .command('ecma-v')
   .argument(
-    '-ev, --ecma-version <ecma-version>',
-    'define the EcmaScript version to check for against a glob of JavaScript files',
-    [ 'ecma3', 'ecma4', 'ecma5', 'ecma6', 'ecma7', 'ecma8' ]
+    '<ecma-version>',
+    'define the EcmaScript version to check for against a glob of JavaScript files'
   ).argument(
-    '-f, --files <files>',
-    'a glob of files to to test the EcmaScript version against',
-    prog.LIST
+    '[files...]',
+    'a glob of files to to test the EcmaScript version against'
   ).action((args, options,  logger) => {
-    const v = options.ecmaVersion
-    const files = options.files
+    const v = args.ecmaVersion
+    const files = args.files
     let e
     // define ecmaScript version
     switch (v) {
@@ -68,11 +66,11 @@ prog
           https://www.npmjs.com/package/acorn
         */
         const result = acorn.parse(f, {
-            ecmaVersion: ecmaV,
+            ecmaVersion: e,
             silent: true,
         })
         if (typeof result === 'Object') {
-          logger.info(`✅ Ecma-v: '${f}' matches ${e}`)
+          logger.info(`✅  Ecma-v: '${f}' matches ${e}`)
         }
         errors.push(f)
         logger.error(`Ecma-v: ERROR '${f}' does not match ${e}`)
@@ -80,7 +78,8 @@ prog
     })
     const matchedErrors = errors.length
     if (matchedErrors <= 0) {
-      logger.info(`🏆 Ecma-v: there were ${matchedErrors}  matching errors!`)
+      logger.info(`🏆  Ecma-v: there were ${matchedErrors}  matching errors!`)
+      return
     } else {
       logger.warn(`Ecma-v: there were ${matchedErrors} matching errors against ${e}.`)
       logger.warn(`- These files did not match:`)
@@ -88,6 +87,7 @@ prog
         const str = error.toString
         logger.info(`-- ${str}\n`)
       })
+      return
     }
   })
 
