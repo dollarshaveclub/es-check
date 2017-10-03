@@ -2,6 +2,7 @@
 const prog = require('caporal')
 const acorn = require('acorn')
 const glob = require('glob')
+const fs = require('fs')
 
 const pkg = require('./package.json')
 const argsArray = process.argv
@@ -31,22 +32,22 @@ prog
         // define ecmaScript version
         switch (v) {
         case 'ecma3':
-            e = '--ecma3'
+            e = '3'
             break
         case 'ecma4':
-            e = 'ecma4'
+            e = '4'
             break
         case 'ecma6':
-            e = 'ecma6'
+            e = '6'
             break
         case 'ecma7':
-            e = '--ecma7'
+            e = '7'
             break
         case 'ecma8':
-            e = '--ecma8'
+            e = '8'
             break
         default:
-            e = '--ecma5'
+            e = '5'
         }
 
         const errors = []
@@ -54,31 +55,27 @@ prog
         // loop through files array
         files.forEach((file) => {
             const f = file
-            /*
-        Glob files
-        ----
-        https://www.npmjs.com/package/glob
-      */
+
             glob(f, options, function (er, files) {
-                /*
-          Figure out ecmascript version using acorn
-          ----
-          https://www.npmjs.com/package/acorn
-        */
-                const result = acorn.parse(f, {
-                    ecmaVersion: e,
-                    silent: true,
+
+                files.forEach(file => {
+                    const result = acorn.parse(fs.readFileSync(file, 'utf8'), {
+                        ecmaVersion: e,
+                        silent: true,
+                    })
+
+                    if (typeof result === 'Object') {
+                        logger.info(`✅  Ecma-v: '${f}' matches ${e}`)
+                    }
+                    errors.push(f)
+                    logger.error(`Ecma-v: ERROR '${f}' does not match ${e}`)
                 })
-                if (typeof result === 'Object') {
-                    logger.info(`✅  Ecma-v: '${f}' matches ${e}`)
-                }
-                errors.push(f)
-                logger.error(`Ecma-v: ERROR '${f}' does not match ${e}`)
             })
         })
+
         const matchedErrors = errors.length
         if (matchedErrors <= 0) {
-            logger.info(`🏆  Ecma-v: there were ${matchedErrors}  matching errors!`)
+            logger.info(`🏆  Ecma-v: there were ${matchedErrors} matching errors!`)
             return
         } else {
             logger.warn(`Ecma-v: there were ${matchedErrors} matching errors against ${e}.`)
@@ -90,6 +87,5 @@ prog
             return
         }
     })
-
 
 prog.parse(process.argv)
