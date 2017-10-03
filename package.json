@@ -1,7 +1,7 @@
 {
-  "name": "eslint-config-es5-only",
+  "name": "ecma-v",
   "version": "0.0.1",
-  "description": "A plugin that only errors for new features that are not supported by es5",
+  "description": "Checks the EcamScript version of .js glob",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js --fix",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dollarshaveclub/eslint-config-es5-only.git"
+    "url": "git+https://github.com/dollarshaveclub/ecma-v.git"
   },
   "keywords": [
     "eslint",
@@ -18,14 +18,17 @@
   "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dollarshaveclub/eslint-config-es5-only/issues"
+    "url": "https://github.com/dollarshaveclub/ecma-v/issues"
   },
-  "homepage": "https://github.com/dollarshaveclub/eslint-config-es5-only#readme",
+  "homepage": "https://github.com/dollarshaveclub/ecma-v#readme",
   "peerDependencies": {
     "eslint": ">= 3"
   },
   "devDependencies": {
     "acorn": "^5.1.2",
     "glob": "^7.1.2"
+  },
+  "dependencies": {
+    "caporal": "^0.7.0"
   }
 }
