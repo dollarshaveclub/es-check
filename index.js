@@ -18,32 +18,33 @@ const argsArray = process.argv
 prog
   .version(pkg.version)
   .command('ecma-v')
-  .option(
+  .argument(
     '-ev, --ecma-version <ecma-version>',
     'define the EcmaScript version to check for against a glob of JavaScript files',
-    [ '--ecma3', '--ecma4', '--ecma5', '--ecma6', '--ecma7', '--ecma8' ],
-  ).option(
+    [ 'ecma3', 'ecma4', 'ecma5', 'ecma6', 'ecma7', 'ecma8' ]
+  ).argument(
     '-f, --files <files>',
     'a glob of files to to test the EcmaScript version against',
-    prog.LIST,
+    prog.LIST
   ).action((args, options,  logger) => {
-    const e = options.ecmaVersion
+    const v = options.ecmaVersion
     const files = options.files
+    let e
     // define ecmaScript version
-    switch (e) {
-      case '--ecma3':
+    switch (v) {
+      case 'ecma3':
           e = '--ecma3'
           break
-      case '--ecma4':
-          e = '--ecma4'
+      case 'ecma4':
+          e = 'ecma4'
           break
-      case '--ecma6':
-          e = '--ecma6'
+      case 'ecma6':
+          e = 'ecma6'
           break
-      case '--ecma7':
+      case 'ecma7':
           e = '--ecma7'
           break
-      case '--ecma8':
+      case 'ecma8':
           e = '--ecma8'
           break
       default:
@@ -71,21 +72,21 @@ prog
             silent: true,
         })
         if (typeof result === 'Object') {
-          logger.info(`✅ ecma-v: '${f}' matches ${e}`)
+          logger.info(`✅ Ecma-v: '${f}' matches ${e}`)
         }
         errors.push(f)
-        logger.error(`ecma-v: ERROR '${f}' does not match ${e}`)
+        logger.error(`Ecma-v: ERROR '${f}' does not match ${e}`)
       })
     })
     const matchedErrors = errors.length
     if (matchedErrors <= 0) {
-      logger.info(`🏆 ecma-v: there were ${matchedErrors}  matching errors!`)
+      logger.info(`🏆 Ecma-v: there were ${matchedErrors}  matching errors!`)
     } else {
-      logger.info(`ecma-v: there were ${matchedErrors} matching errors against ${e}.`)
-      logger.info(`- these files did not match:`)
+      logger.warn(`Ecma-v: there were ${matchedErrors} matching errors against ${e}.`)
+      logger.warn(`- These files did not match:`)
       errors.forEach((error) => {
         const str = error.toString
-        logger.info(`-- ${str}`)
+        logger.info(`-- ${str}\n`)
       })
     }
   })

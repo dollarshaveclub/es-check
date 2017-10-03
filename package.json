@@ -1,20 +1,23 @@
 {
   "name": "ecma-v",
   "version": "0.0.1",
-  "description": "Checks the EcamScript version of .js glob",
+  "description": "Checks the EcamScript version of .js glob against a specified version of EcamScript with a shell command",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "lint": "eslint index.js --fix",
-    "test": "node index.js --ecma5 --files ./sample-tests/*.js"
+    "test": "npm runtest:fail:array && npm run test:fail:glob && npm run test:fail:individual && npm run test:pass:array && npm run test:pass:glob && npm run test:pass:individual",
+    "test:fail:array": "node index.js --ev ecma5 --files ./sample-tests/es6.js ./sample-tests/es6.js",
+    "test:fail:glob": "node index.js --ev ecma5 --files ./sample-tests/*.js",
+    "test:fail:individual": "node index.js --ev ecma5 --files ./sample-tests/es6.js",
+    "test:pass:array": "node index.js --ev ecma5 --files ./sample-tests/es5.js ./sample-tests/es5.js",
+    "test:pass:glob": "node index.js --ev ecma6 --files ./sample-tests/*.js",
+    "test:pass:individual": "node index.js --ev ecma5 --files ./sample-tests/es5.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dollarshaveclub/ecma-v.git"
   },
-  "keywords": [
-    "eslint",
-    "eslintconfig"
-  ],
   "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in)",
   "license": "MIT",
   "bugs": {
@@ -30,5 +33,26 @@
   },
   "dependencies": {
     "caporal": "^0.7.0"
-  }
+  },
+  "engines": {
+    "node": ">= 7"
+  },
+  "keywords": [
+    "check for es6",
+    "check for modules",
+    "es",
+    "es check",
+    "es matching",
+    "es version",
+    "ecmascript",
+    "ecmascript check",
+    "ecmascript matching",
+    "ecmascript version",
+    "js",
+    "js version",
+    "js version check",
+    "js version matching",
+    "test js version",
+    "test ecmascript version"
+  ]
 }
