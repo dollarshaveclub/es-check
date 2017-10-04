@@ -17,7 +17,7 @@ const argsArray = process.argv
 */
 prog
   .version(pkg.version)
-  .command('ecma-v')
+  .command('check')
   .argument(
     '<ecma-version>',
     'define the EcmaScript version to check for against a glob of JavaScript files'
