@@ -1,29 +1,58 @@
 {
-  "name": "eslint-config-es5-only",
+  "name": "ecma-v",
   "version": "0.0.1",
-  "description": "A plugin that only errors for new features that are not supported by es5",
+  "description": "Checks the EcamScript version of .js glob against a specified version of EcamScript with a shell command",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
-    "test": "test"
+    "lint": "eslint index.js --fix",
+    "test": "npm run test:fail:array && npm run test:fail:glob && npm run test:fail:individual && npm run test:pass:array && npm run test:pass:glob && npm run test:pass:individual",
+    "test:fail:array": "node index.js ecma-v ecma5 ./sample-tests/es6.js ./sample-tests/es6.js",
+    "test:fail:glob": "node index.js ecma-v ecma5 ./sample-tests/*.js",
+    "test:fail:individual": "node index.js ecma-v ecma5 ./sample-tests/es6.js",
+    "test:pass:array": "node index.js ecma-v ecma5 ./sample-tests/es5.js ./sample-tests/es5.js",
+    "test:pass:glob": "node index.js ecma-v ecma6 ./sample-tests/*.js",
+    "test:pass:individual": "node index.js ecma-v ecma5 ./sample-tests/es5.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dollarshaveclub/eslint-config-es5-only.git"
+    "url": "git+https://github.com/dollarshaveclub/ecma-v.git"
   },
-  "keywords": [
-    "eslint",
-    "eslintconfig"
-  ],
   "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dollarshaveclub/eslint-config-es5-only/issues"
+    "url": "https://github.com/dollarshaveclub/ecma-v/issues"
   },
-  "homepage": "https://github.com/dollarshaveclub/eslint-config-es5-only#readme",
+  "homepage": "https://github.com/dollarshaveclub/ecma-v#readme",
   "peerDependencies": {
     "eslint": ">= 3"
   },
   "devDependencies": {
-    "jest": "^21.2.1"
-  }
+    "acorn": "^5.1.2",
+    "glob": "^7.1.2"
+  },
+  "dependencies": {
+    "caporal": "^0.7.0"
+  },
+  "engines": {
+    "node": ">= 7"
+  },
+  "keywords": [
+    "check for es6",
+    "check for modules",
+    "es",
+    "es check",
+    "es matching",
+    "es version",
+    "ecmascript",
+    "ecmascript check",
+    "ecmascript matching",
+    "ecmascript version",
+    "js",
+    "js version",
+    "js version check",
+    "js version matching",
+    "test js version",
+    "test ecmascript version"
+  ]
 }
