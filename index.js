@@ -52,38 +52,25 @@ prog
 
         const errors = []
 
-        // loop through files array
-        files.forEach((file) => {
-            const f = file
+        files.forEach((pattern) => {
+            const globbedFiles = glob.sync(pattern, options)
 
-            glob(f, options, function (er, files) {
-
-                files.forEach(file => {
-                    const result = acorn.parse(fs.readFileSync(file, 'utf8'), {
-                        ecmaVersion: e,
-                        silent: true,
+            globbedFiles.forEach(function (file) {
+                const code = fs.readFileSync(file, 'utf8')
+                try {
+                    const result = acorn.parse(code, {
+                        ecmaVersion: e
                     })
-
-                    if (typeof result === 'Object') {
-                        logger.info(`✅  Ecma-v: '${f}' matches ${e}`)
-                    }
-                    errors.push(f)
-                    logger.error(`Ecma-v: ERROR '${f}' does not match ${e}`)
-                })
+                    logger.info(`Ecma-v: '${file}' matches ecma${e}`)
+                } catch (err) {
+                    logger.error(`Ecma-v: '${file}' does not match ecma${e}`)
+                    errors.push(file)
+                }
             })
         })
 
-        const matchedErrors = errors.length
-        if (matchedErrors <= 0) {
-            logger.info(`🏆  Ecma-v: there were ${matchedErrors} matching errors!`)
-            return
-        } else {
-            logger.warn(`Ecma-v: there were ${matchedErrors} matching errors against ${e}.`)
-            logger.warn(`- These files did not match:`)
-            errors.forEach((error) => {
-                const str = error.toString
-                logger.info(`-- ${str}\n`)
-            })
+        if (errors.length > 0) {
+            logger.info(`\n🏆  Ecma-v: there were ${errors.length} matching errors!`)
             return
         }
     })
