@@ -1,3 +1,6 @@
+<p align="center">
+  <img alt="Ecma-V banner" src="https://yowainwright.imgix.net/gh/ecma-v.svg" width="200" />
+</p>
 <h1 align="center">Ecma V</h1>
 <h5 align="center">Check files version of ecmascript with simple scripts 🏆</h5>
 
@@ -8,7 +11,7 @@
   <a href="#usage">Usage</a>&nbsp;&nbsp;
   <a href="#why">Why Ecma-V?</a>&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;
-  <a href="/issues">issues</a>  
+  <a href="/issues">Issues</a>  
 </p>
 
 ----
