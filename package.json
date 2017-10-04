@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/dollarshaveclub/ecma-v.git"
   },
-  "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in)",
+  "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in), Brian Gonzalez <me@briangonzalez.org>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dollarshaveclub/ecma-v/issues"
