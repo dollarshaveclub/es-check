@@ -23,8 +23,6 @@ it('👌  Ecma V should fail when checking an array of es6 files as es5', (done)
   })
 })
 
-
-
 it('🎉  Ecma V should pass when checking a glob of es6 files ', (done) => {
   exec('node index.js check ecma6 ./tests/*.js', (err, stdout, stderr) => {
     if (err) {
