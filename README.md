@@ -18,7 +18,7 @@
 
 ----
 
-**ECMA V**, short for `ECMA Version`, checks JavaScript files against a specified version of ECMAScript (Standardized JavaScript) with a shell script. In example, `ecma-v 5 ./dist/*.js` will check `/dist` files to see if they're ECMAScript 5 [ES5] and throw errors if they are not. If the specified ECMAScript version in a JavaScript is incorrect within a JavaScript file(s), Ecma V will throw an error. This is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. 
+**ECMA V**, short for `ECMA Version`, checks JavaScript files against a specified version of ECMAScript with a shell command. If a specified file's ECMAScript version doesn't match the ECMAScript version argument passed in the Ecma V shell script, Ecma V will throw an error.  In example, by running the command `ecma-v check ecma6 ./dist/*.js` will check `/dist/*.js` files to see if they're ECMAScript 5 and throw errors for any files are that are not. This is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. 
 
 ----
 
