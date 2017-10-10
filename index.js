@@ -63,7 +63,7 @@ prog
             ecmaVersion: e,
             silent: true,
           })
-          logger.info(`🏆 Ecma-v: '${file}' matches ecma${e}`)
+          logger.info(`🏆  Ecma-v: '${file}' matches ecma${e}`)
         } catch (err) {
           logger.error(`Ecma-v: '${file}' does not match ecma${e}`)
           errors.push(file)
@@ -79,7 +79,7 @@ prog
       process.exit(1)
       return
     } else {
-      logger.error(`Ecma-v: there were no matching errors! 🎉`)
+      logger.error(`Ecma-v: there were no matching errors!  🎉`)
     }
   })
 

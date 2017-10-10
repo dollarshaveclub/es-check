@@ -6,13 +6,7 @@
   "bin": "index.js",
   "scripts": {
     "lint": "eslint index.js --fix",
-    "test": "npm run test:fail:array && npm run test:fail:glob && npm run test:fail:individual && npm run test:pass:array && npm run test:pass:glob && npm run test:pass:individual",
-    "test:fail:array": "node index.js check ecma5 ./tests/es6.js ./tests/es6.js",
-    "test:fail:glob": "node index.js check ecma5 ./tests/*.js",
-    "test:fail:individual": "node index.js check ecma5 ./tests/es6.js",
-    "test:pass:array": "node index.js check ecma5 ./tests/es5.js ./tests/es5.js",
-    "test:pass:glob": "node index.js check ecma6 ./tests/*.js",
-    "test:pass:individual": "node index.js check ecma5 ./tests/es5.js"
+    "test": "mocha test.js --timeout 10s"
   },
   "repository": {
     "type": "git",
@@ -29,9 +23,12 @@
   },
   "devDependencies": {
     "acorn": "^5.1.2",
+    "assert": "^1.4.1",
     "eslint": "^4.8.0",
     "eslint-plugin-dollarshaveclub": "^1.0.2",
-    "glob": "^7.1.2"
+    "glob": "^7.1.2",
+    "globby": "^6.1.0",
+    "mocha": "^4.0.1"
   },
   "dependencies": {
     "caporal": "^0.7.0"
