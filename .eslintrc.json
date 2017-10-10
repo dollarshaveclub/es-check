@@ -1,17 +1,11 @@
 {
-  "env": {
-    "browser": true,
-    "node": true
-  },
-  "globals": {
-    "document": true,
-    "window": true
-  },
+  "extends": [
+    "plugin:dollarshaveclub/ember"
+  ],
+  "plugins": [
+    "dollarshaveclub"
+  ],
   "parserOptions": {
     "ecmaVersion": 6
-  },
-  "rules": {
-    "indent": 2,
-    "semi": [2, "never"]
   }
 }
