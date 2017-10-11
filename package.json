@@ -6,7 +6,6 @@
   "bin": "index.js",
   "scripts": {
     "lint": "eslint index.js --fix",
-    "pre-commit-msg": "Echo 'Running pre-commit checks...' && exit 0",
     "report:coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "see:coverage": "(COVERAGE=true ember test) && open ./coverage/index.html",
     "test": "nyc mocha test.js --timeout 10s --coverage"
@@ -33,22 +32,13 @@
     "glob": "^7.1.2",
     "globby": "^6.1.0",
     "mocha": "^4.0.1",
-    "nyc": "^11.2.1",
-    "pre-commit": "^1.2.2"
+    "nyc": "^11.2.1"
   },
   "dependencies": {
     "caporal": "^0.7.0"
   },
   "engines": {
     "node": ">= 7"
-  },
-  "pre-commit": {
-    "run": [
-      "pre-commit-msg",
-      "lint",
-      "test"
-    ],
-    "silent": true
   },
   "keywords": [
     "check for es6",
