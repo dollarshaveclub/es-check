@@ -6,7 +6,9 @@
   "bin": "index.js",
   "scripts": {
     "lint": "eslint index.js --fix",
-    "test": "mocha test.js --timeout 10s"
+    "report:coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "see:coverage": "(COVERAGE=true ember test) && open ./coverage/index.html",
+    "test": "nyc mocha test.js --timeout 10s --coverage"
   },
   "repository": {
     "type": "git",
@@ -24,11 +26,13 @@
   "devDependencies": {
     "acorn": "^5.1.2",
     "assert": "^1.4.1",
+    "codecov": "^2.3.0",
     "eslint": "^4.8.0",
     "eslint-plugin-dollarshaveclub": "^1.0.2",
     "glob": "^7.1.2",
     "globby": "^6.1.0",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1"
   },
   "dependencies": {
     "caporal": "^0.7.0"

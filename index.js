@@ -63,23 +63,21 @@ prog
             ecmaVersion: e,
             silent: true,
           })
-          logger.info(`🏆  Ecma-v: '${file}' matches ecma${e}`)
         } catch (err) {
-          logger.error(`Ecma-v: '${file}' does not match ecma${e}`)
           errors.push(file)
         }
       })
     })
 
     if (errors.length > 0) {
-      logger.error(`Ecma-v: there were ${errors.length} matching errors!`)
+      logger.error(`Ecma-v: there were ${errors.length} ES version matching errors.`)
       errors.forEach((error) => {
         logger.info(`\n Ecma-v: error in: ${error}`)
       })
       process.exit(1)
       return
     } else {
-      logger.error(`Ecma-v: there were no matching errors!  🎉`)
+      logger.error(`Ecma-v: there were no ES version matching errors!  🎉`)
     }
   })
 
