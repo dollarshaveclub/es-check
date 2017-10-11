@@ -6,6 +6,7 @@
   "bin": "index.js",
   "scripts": {
     "lint": "eslint index.js --fix",
+    "pre-commit-msg": "Echo 'Running pre-commit checks...' && exit 0",
     "report:coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "see:coverage": "(COVERAGE=true ember test) && open ./coverage/index.html",
     "test": "nyc mocha test.js --timeout 10s --coverage"
@@ -40,6 +41,14 @@
   },
   "engines": {
     "node": ">= 7"
+  },
+  "pre-commit": {
+    "run": [
+      "pre-commit-msg",
+      "lint",
+      "test"
+    ],
+    "silent": true
   },
   "keywords": [
     "check for es6",

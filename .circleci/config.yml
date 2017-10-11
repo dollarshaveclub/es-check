@@ -33,16 +33,6 @@ jobs:
           paths:
             - node_modules
 
-  done: *defaults_done
-
-  deploy_release:
-    <<: *defaults
-    steps:
-      - checkout
-      - deploy:
-          name: deploy release
-          command: git push origin master:release -f
-
 workflows:
   version: 2
   test_all:
