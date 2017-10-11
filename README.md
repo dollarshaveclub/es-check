@@ -2,6 +2,8 @@
   <img alt="ECMA-V banner" src="https://yowainwright.imgix.net/gh/ecma-v.svg" width="150" />
 </p>
 
+<h1 align="center">ECMA-V is now called ES-Check. Chekout out <a href="https://github.com/dollarshaveclub/es-check">ES-Check</a>!<h1>
+
 ----
 
 <h5 align="center">Checks the version of ECMAScript used in JavaScript with shell commands  🏆</h5>
