@@ -1,4 +1,4 @@
-<h1 align="center">ES Check ✔️<h1>
+<h1 align="center">ES Check ✔️</h1>
 <h5 align="center">Checks the JavaScript files version of ECMAScript (ES) with shell commands  🏆</h5>
 
 ----
