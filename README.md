@@ -74,7 +74,7 @@ es-check check ecma5 ./js/*.js ./files/*.js
 ----
 
 
-<h2 id="why">Why es check?</h2>
+<h2 id="why">Why ES Check?</h2>
 
 In modern JavaScript builds, files are bundled up so they can be served in an optimized manner in the browsers. It is assumed by developers that future JavaScript—like ES8 will be transpiled (changed from future JavaScript to current JavaScript) appropriately by a tool like Babel. Sometimes there is an issue where files are not transpiled. There was no efficient way to test for files that weren't transpiled—until now. That's what ES Check does.
 
