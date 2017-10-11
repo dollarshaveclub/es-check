@@ -1,5 +1,5 @@
 {
-  "name": "ecma-v",
+  "name": "es-check",
   "version": "0.0.2",
   "description": "Checks the EcamScript version of .js glob against a specified version of EcamScript with a shell command",
   "main": "index.js",
@@ -7,19 +7,18 @@
   "scripts": {
     "lint": "eslint index.js --fix",
     "report:coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
-    "see:coverage": "(COVERAGE=true ember test) && open ./coverage/index.html",
     "test": "nyc mocha test.js --timeout 10s --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dollarshaveclub/ecma-v.git"
+    "url": "git+https://github.com/dollarshaveclub/es-check.git"
   },
   "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in), Brian Gonzalez <me@briangonzalez.org>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dollarshaveclub/ecma-v/issues"
+    "url": "https://github.com/dollarshaveclub/es-check/issues"
   },
-  "homepage": "https://github.com/dollarshaveclub/ecma-v#readme",
+  "homepage": "https://github.com/dollarshaveclub/es-check#readme",
   "peerDependencies": {
     "eslint": ">= 3"
   },

@@ -8,7 +8,7 @@ const pkg = require('./package.json')
 const argsArray = process.argv
 
 /*
-  ecma-v 🏆
+  es-check 🏆
   ----
   - define the EcmaScript version to check for against a glob of JavaScript files
   - match the EcmaScript version option against a glob of files
@@ -20,7 +20,7 @@ prog
   .command('check')
   .alias('c')
   .argument(
-    '<ecma-version>',
+    '<ecmaVersion>',
     'define the EcmaScript version to check for against a glob of JavaScript files'
   ).argument(
     '[files...]',
@@ -70,14 +70,14 @@ prog
     })
 
     if (errors.length > 0) {
-      logger.error(`Ecma-v: there were ${errors.length} ES version matching errors.`)
+      logger.error(`ES-check: there were ${errors.length} ES version matching errors.`)
       errors.forEach((error) => {
-        logger.info(`\n Ecma-v: error in: ${error}`)
+        logger.info(`\n es-check: error in: ${error}`)
       })
       process.exit(1)
       return
     } else {
-      logger.error(`Ecma-v: there were no ES version matching errors!  🎉`)
+      logger.error(`ES-check: there were no ES version matching errors!  🎉`)
     }
   })
 
