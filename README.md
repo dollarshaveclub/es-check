@@ -4,7 +4,35 @@
 
 ----
 
-<p align="center"><strong>Check JavaScript files ES version against a specified ES version</strong> 🏆</p>
+<p align="center">Check JavaScript files ES version against a specified ES version 🏆</p>
+
+----
+
+<p align="center">
+  <a href="https://circleci.com/gh/dollarshaveclub/es-check/tree/master">
+    <img alt="Build Status" src="https://circleci.com/gh/dollarshaveclub/es-check/tree/master.svg?style=svg" />
+  </a>
+  <a href="https://www.npmjs.com/package/es-check">
+    <img alt="npm version" src="https://badge.fury.io/js/es-check.svg" />
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img alt="Greenkeeper" src="https://badges.greenkeeper.io/dollarshaveclub/es-check.svg" />
+  </a>
+  <a href="https://codecov.io/gh/dollarshaveclub/es-check">
+    <img src="https://codecov.io/gh/dollarshaveclub/es-check/branch/master/graph/badge.svg" alt="Codecov" />
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=checkout%20out%20es%20check%20to%20never%20have%20to%20worry%20about%20es%20issues%20in%20production%20again">
+    <img alt="Share on Twitter" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&maxAge=2592000" />
+  </a>
+</p>
+
+----
+
+<h1 align="center">ES Check ✔️</h1>
+
+**ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.  
+
+Ensuring that JavaScript files can pass ES Check is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. Read more about [why](#why).
 
 ----
 
@@ -17,12 +45,6 @@
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;
   <a href="/issues">Issues</a>  
 </p>
-
-----
-
-**ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.  
-
-Ensuring that JavaScript files can pass ES Check is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. Read more about [why](#why).
 
 ----
 
