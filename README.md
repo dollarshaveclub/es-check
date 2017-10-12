@@ -59,7 +59,7 @@ npm i es-check --save-dev
 Check if an array or glob of files matches a specified ES version
 
 ```sh
-node_modules/ecma-v/index.js check es5 ./vendor/js/*.js ./dist/**/*.js
+node_modules/es-check/index.js check es5 ./vendor/js/*.js ./dist/**/*.js
 ```
 
 - The ES Check script (above) checks `/dist/*.js` files to see if they're ES5. It throws an error and logs files are that do not pass the check. 
@@ -125,7 +125,7 @@ Here are some example of **es check** scripts that could be run:
 
 ```sh
 # globs
-node_modules/ecma-v/index.js check es5 ./js/*.js
+node_modules/es-check-v/index.js check es5 ./js/*.js
 
 # array of arguments
 bin/es-check check es5 ./js/*.js ./dist/*.js
