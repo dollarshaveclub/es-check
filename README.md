@@ -125,10 +125,10 @@ Here are some example of **es check** scripts that could be run:
 
 ```sh
 # globs
-node_modules/es-check-v/index.js check es5 ./js/*.js
+node_modules/es-check/index.js check es5 ./js/*.js
 
 # array of arguments
-bin/es-check check es5 ./js/*.js ./dist/*.js
+node_modules/es-check/index.js check es5 ./js/*.js ./dist/*.js
 ```
 
 ----
