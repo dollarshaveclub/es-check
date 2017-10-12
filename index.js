@@ -31,19 +31,34 @@ prog
     let e
     // define ecmaScript version
     switch (v) {
-      case 'ecma3':
+      case 'es3':
         e = '3'
         break
-      case 'ecma4':
+      case 'es4':
         e = '4'
         break
-      case 'ecma6':
+      case 'es5':
+        e = '5'
+        break
+      case 'es6':
         e = '6'
         break
-      case 'ecma7':
+      case 'es7':
         e = '7'
         break
-      case 'ecma8':
+      case 'es8':
+        e = '8'
+        break
+      case 'es2015':
+        e = '5'
+        break
+      case 'es2016':
+        e = '6'
+        break
+      case 'es2017':
+        e = '7'
+        break
+      case 'es2018':
         e = '8'
         break
       default:

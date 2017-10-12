@@ -1,19 +1,66 @@
-<h1 align="center">ES Check ✔️</h1>
-<h5 align="center">Checks the JavaScript files version of ECMAScript (ES) with shell commands  🏆</h5>
+<p align="center">
+  <img src="https://yowainwright.imgix.net/gh/es-check.svg" alt="ES Check ✔️" width="120" />
+</p>
+
+----
+
+<p align="center"><strong>Check JavaScript files ES version against a specified ES version</strong> 🏆</p>
 
 ----
 
 <p align="center">
-  <a href="#api">API</a>&nbsp;&nbsp;
-  <a href="#usage">Usage</a>&nbsp;&nbsp;
+  <a href="#get-started">Get Started</a>&nbsp;&nbsp;
   <a href="#why">Why ES Check?</a>&nbsp;&nbsp;
+  <a href="#usage">Usage</a>&nbsp;&nbsp;
+  <a href="#walkthrough">Walk Through</a>&nbsp;&nbsp;
+  <a href="#api">API</a>&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;
   <a href="/issues">Issues</a>  
 </p>
 
 ----
 
-**ES Check** checks JavaScript files against a specified version of ECMAScript with a shell command. If a specified file's ECMAScript version doesn't match the ECMAScript version argument passed in the es check shell script, es check will throw an error.  For example, `es-check check ecma5 ./dist/*.js` will check `/dist/*.js` files to see if they're ECMAScript 5 and throw errors for any files are that are not. This is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. 
+**ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.  
+
+Ensuring that JavaScript files can pass ES Check is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. Read more about [why](#why).
+
+----
+
+## Get Started
+
+Install
+
+```sh
+npm i es-check --save-dev
+```
+
+Check if an array or glob of files matches a specified ES version
+
+```sh
+node_modules/ecma-v/index.js check es5 ./vendor/js/*.js ./dist/**/*.js
+```
+
+- The ES Check script (above) checks `/dist/*.js` files to see if they're ES5. It throws an error and logs files are that do not pass the check. 
+
+----
+
+<h2 id="why">Why ES Check?</h2>
+
+In modern JavaScript builds, files are bundled up so they can be served in an optimized manner in the browsers. It is assumed by developers that future JavaScript—like ES8 will be transpiled (changed from future JavaScript to current JavaScript) appropriately by a tool like Babel. Sometimes there is an issue where files are not transpiled. There was no efficient way to test for files that weren't transpiled—until now. That's what ES Check does.
+
+----
+
+<h2 id="walkthrough">Walk through</h2>
+
+The images below demonstrate command line scripts and their corresponding logged results. 
+
+Pass
+![pass](https://user-images.githubusercontent.com/1074042/31471487-d7be22ee-ae9d-11e7-86e2-2c0f71cfffe6.jpg)
+
+Fail
+![fail](https://user-images.githubusercontent.com/1074042/31471486-d65c3a80-ae9d-11e7-94fd-68b7acdb2d89.jpg)
+
+**ES Check** is run above with node commands. It can also be run within npm scripts, ci tools, or testing suites.
 
 ----
 
@@ -24,8 +71,6 @@
 ### General Information
 
 ```sh
-es-check 0.0.1
-
 USAGE
 
 index.js es-check <es-checkersion> [files...]
@@ -34,17 +79,13 @@ index.js es-check <es-checkersion> [files...]
 ### Arguments
 
 ```sh
-ARGUMENTS
-
-<es-checkersion> define the ECMAScript version to check for against a glob of JavaScript files      required
-[files...] a glob of files to test the ECMAScript version against                          optional
+<ecmaVersion> 'define the ECMAScript version to check for against a glob of JavaScript files' required
+[files...] 'a glob of files to test the ECMAScript version against' required
 ```
 
 ### Global Options
 
 ```sh
-GLOBAL OPTIONS
-
 -h, --help         Display help
 -V, --version      Display version
 --no-color         Disable colors
@@ -56,30 +97,20 @@ GLOBAL OPTIONS
 
 ## Usage
 
-**ES Check** is a shell command CLI. It is run in [shell tool](http://linuxcommand.org/lc3_learning_the_shell.php) like Terminal, ITerm, or Hyper. It takes in two arguments: an [ECMAScript version](https://www.w3schools.com/js/js_versions.asp) (`<ECMAScript version>`) and files (`[files]`) in [globs](http://searchsecurity.techtarget.com/definition/globbing).
+ES Check is a shell command CLI. It is run in [shell tool](http://linuxcommand.org/lc3_learning_the_shell.php) like Terminal, ITerm, or Hyper. It takes in two arguments: an [ECMAScript version](https://www.w3schools.com/js/js_versions.asp) (`<ECMAScript version>`) and files (`[files]`) in [globs](http://searchsecurity.techtarget.com/definition/globbing).
 
 Here are some example of **es check** scripts that could be run:
 
 ```sh
-# global
-es-check check ecma5 ./js/*.js
+# globs
+node_modules/ecma-v/index.js check es5 ./js/*.js
 
-# project
-bin/es-check check ecma5 ./js/*.js
-
-# with a files array
-es-check check ecma5 ./js/*.js ./files/*.js
+# array of arguments
+bin/es-check check es5 ./js/*.js ./dist/*.js
 ```
-
-----
-
-
-<h2 id="why">Why ES Check?</h2>
-
-In modern JavaScript builds, files are bundled up so they can be served in an optimized manner in the browsers. It is assumed by developers that future JavaScript—like ES8 will be transpiled (changed from future JavaScript to current JavaScript) appropriately by a tool like Babel. Sometimes there is an issue where files are not transpiled. There was no efficient way to test for files that weren't transpiled—until now. That's what ES Check does.
 
 ----
 
 ## Contributing
 
-**ES Check** is dependent on 3 tools: [acorn](https://github.com/ternjs/acorn/), [glob](https://www.npmjs.com/package/glob), and [caporal](https://github.com/mattallty/Caporal.js). To contribute, file an [issue](https://github.com/dollarshaveclub/es-check/issues) or submit a pull request.
+ES Check has 3 main dependencies: [acorn](https://github.com/ternjs/acorn/), [glob](https://www.npmjs.com/package/glob), and [caporal](https://github.com/mattallty/Caporal.js). To contribute, file an [issue](https://github.com/dollarshaveclub/es-check/issues) or submit a pull request.
