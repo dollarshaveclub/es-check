@@ -21,7 +21,7 @@
   <a href="https://codecov.io/gh/dollarshaveclub/es-check">
     <img src="https://codecov.io/gh/dollarshaveclub/es-check/branch/master/graph/badge.svg" alt="Codecov" />
   </a>
-  <a href="https://twitter.com/intent/tweet?text=checkout%20out%20es%20check%20to%20never%20have%20to%20worry%20about%20es%20issues%20in%20production%20again">
+  <a href="https://twitter.com/intent/tweet?text=ES%20Check%E2%80%94Checks%20the%20version%20of%20ES%20in%20JavaScript%20files%20with%20simple%20shell%20commands%20%40dollarshaveclub%20https%3A%2F%2Fgithub.com%2Fdollarshaveclub%2Fes-check">
     <img alt="Share on Twitter" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&maxAge=2592000" />
   </a>
 </p>
