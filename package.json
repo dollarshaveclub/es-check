@@ -34,7 +34,7 @@
     "nyc": "^11.2.1"
   },
   "dependencies": {
-    "caporal": "^0.7.0"
+    "caporal": "^0.8.0"
   },
   "engines": {
     "node": ">= 7"
