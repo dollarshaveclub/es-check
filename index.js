@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+
+'use strict'
+
 const prog = require('caporal')
 const acorn = require('acorn')
 const glob = require('glob')

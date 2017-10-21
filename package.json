@@ -37,7 +37,7 @@
     "caporal": "^0.7.0"
   },
   "engines": {
-    "node": ">= 7"
+    "node": ">= 4"
   },
   "keywords": [
     "check for es6",
