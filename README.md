@@ -30,7 +30,7 @@
 
 <h1 align="center">ES Check ✔️</h1>
 
-**ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.  
+**ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.
 
 Ensuring that JavaScript files can pass ES Check is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. Read more about [why](#why).
 
@@ -43,7 +43,7 @@ Ensuring that JavaScript files can pass ES Check is important in a [modular and 
   <a href="#walkthrough">Walk Through</a>&nbsp;&nbsp;
   <a href="#api">API</a>&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;
-  <a href="/issues">Issues</a>  
+  <a href="/issues">Issues</a>
 </p>
 
 ----
@@ -62,7 +62,7 @@ Check if an array or glob of files matches a specified ES version
 node_modules/es-check/index.js check es5 ./vendor/js/*.js ./dist/**/*.js
 ```
 
-- The ES Check script (above) checks `/dist/*.js` files to see if they're ES5. It throws an error and logs files are that do not pass the check. 
+- The ES Check script (above) checks `/dist/*.js` files to see if they're ES5. It throws an error and logs files are that do not pass the check.
 
 ----
 
@@ -74,7 +74,7 @@ In modern JavaScript builds, files are bundled up so they can be served in an op
 
 <h2 id="walkthrough">Walk through</h2>
 
-The images below demonstrate command line scripts and their corresponding logged results. 
+The images below demonstrate command line scripts and their corresponding logged results.
 
 Pass
 ![pass](https://user-images.githubusercontent.com/1074042/31471487-d7be22ee-ae9d-11e7-86e2-2c0f71cfffe6.jpg)
@@ -103,6 +103,12 @@ index.js es-check <es-checkersion> [files...]
 ```sh
 <ecmaVersion> 'define the ECMAScript version to check for against a glob of JavaScript files' required
 [files...] 'a glob of files to test the ECMAScript version against' required
+```
+
+### Options
+
+```sh
+-c, --concurrency <concurrency> 'number of concurrent workers for processing files' optional default: Number of CPUs
 ```
 
 ### Global Options
@@ -139,6 +145,6 @@ ES Check has 3 main dependencies: [acorn](https://github.com/ternjs/acorn/), [gl
 
 ## Acknowledgements
 
-ES Check is a small utility using powerful tools that [Isaac Z. Schlueter](https://github.com/isaacs), [Marijn Haverbeke](https://github.com/marijnh), and [Matthias Etienne](https://github.com/mattallty) built. [ES Checker](https://github.com/ruanyf/es-checker) by [Ruan YiFeng](https://github.com/ruanyf) checks the JavaScript version supported within a [browser](http://ruanyf.github.io/es-checker/) at run time. ES Check offers similar feedback to ES Checker but at build time and is specific to the product that is using it. ES Check was started after reading this [post](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) about [deploying es2015 code to production today] by [Philip Walton](https://github.com/philipwalton). 
+ES Check is a small utility using powerful tools that [Isaac Z. Schlueter](https://github.com/isaacs), [Marijn Haverbeke](https://github.com/marijnh), and [Matthias Etienne](https://github.com/mattallty) built. [ES Checker](https://github.com/ruanyf/es-checker) by [Ruan YiFeng](https://github.com/ruanyf) checks the JavaScript version supported within a [browser](http://ruanyf.github.io/es-checker/) at run time. ES Check offers similar feedback to ES Checker but at build time and is specific to the product that is using it. ES Check was started after reading this [post](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) about [deploying es2015 code to production today] by [Philip Walton](https://github.com/philipwalton).
 
 
