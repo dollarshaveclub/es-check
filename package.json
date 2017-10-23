@@ -28,13 +28,14 @@
     "codecov": "^2.3.0",
     "eslint": "^4.8.0",
     "eslint-plugin-dollarshaveclub": "^1.0.2",
-    "glob": "^7.1.2",
-    "globby": "^6.1.0",
     "mocha": "^4.0.1",
     "nyc": "^11.2.1"
   },
   "dependencies": {
-    "caporal": "^0.8.0"
+    "caporal": "^0.8.0",
+    "globby": "^6.1.0",
+    "p-map": "^1.2.0",
+    "pify": "^3.0.0"
   },
   "engines": {
     "node": ">= 7"

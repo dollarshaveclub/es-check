@@ -1,10 +1,16 @@
 #!/usr/bin/env node
-const prog = require('caporal')
-const acorn = require('acorn')
-const glob = require('glob')
+
+const os = require('os')
 const fs = require('fs')
 
+const acorn = require('acorn')
+const prog = require('caporal')
+const globby = require('globby')
+const pify = require('pify')
+const pMap = require('p-map')
+
 const pkg = require('./package.json')
+const readFileAsync = pify(fs.readFile)
 const argsArray = process.argv
 
 /*
@@ -12,7 +18,7 @@ const argsArray = process.argv
   ----
   - define the EcmaScript version to check for against a glob of JavaScript files
   - match the EcmaScript version option against a glob of files
-    to to test the EcmaScript version of each file
+    to test the EcmaScript version of each file
   - error failures
 */
 prog
@@ -25,9 +31,15 @@ prog
   ).argument(
     '[files...]',
     'a glob of files to to test the EcmaScript version against'
-  ).action((args, options,  logger) => {
+  ).option(
+    '-c, --concurrency <concurrency>',
+    'number of concurrent workers for processing files',
+    prog.INT,
+    os.cpus().length
+  ).action((args, options, logger) => {
     const v = args.ecmaVersion
     const files = args.files
+    const concurrency = options.concurrency
     let e
     // define ecmaScript version
     switch (v) {
@@ -65,35 +77,37 @@ prog
         e = '5'
     }
 
-    const errors = []
+    globby(files)
+      .then((paths) => {
+        const errFiles = []
+        const acornOpts = { ecmaVersion: e, silent: true }
 
-    files.forEach((pattern) => {
-      // pattern => glob or array
-      const globbedFiles = glob.sync(pattern)
-
-      globbedFiles.forEach((file) => {
-        const code = fs.readFileSync(file, 'utf8')
-        try {
-          const result = acorn.parse(code, {
-            ecmaVersion: e,
-            silent: true,
+        const processor = (file) => readFileAsync(file, 'utf8')
+          .then((code) => {
+            acorn.parse(code, acornOpts)
           })
-        } catch (err) {
-          errors.push(file)
-        }
-      })
-    })
+          .catch((err) => {
+            logger.debug(`ES-check: parsing error for ${file}: ${err}`)
+            errFiles.push(file)
+          })
 
-    if (errors.length > 0) {
-      logger.error(`ES-check: there were ${errors.length} ES version matching errors.`)
-      errors.forEach((error) => {
-        logger.info(`\n es-check: error in: ${error}`)
+        return pMap(paths, processor, { concurrency })
+          .then(() => {
+            if (errFiles.length > 0) {
+              logger.error(`ES-check: there were ${errFiles.length} ES version matching errors.`)
+              errFiles.forEach((file) => {
+                logger.info(`\n es-check: error in: ${file}`)
+              })
+              process.exit(1)
+            } else {
+              logger.error(`ES-check: there were no ES version matching errors!  🎉`)
+            }
+          })
       })
-      process.exit(1)
-      return
-    } else {
-      logger.error(`ES-check: there were no ES version matching errors!  🎉`)
-    }
+      .catch((err) => {
+        logger.error(`ES-check: unexpected error: ${err}`)
+        process.exit(1)
+      })
   })
 
-prog.parse(process.argv)
+prog.parse(argsArray)

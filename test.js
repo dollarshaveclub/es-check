@@ -1,5 +1,4 @@
 const exec = require('child_process').exec
-const globby = require('globby')
 const assert = require('assert')
 
 it('🎉  Es Check should pass when checking an array of es5 files as es5', (done) => {
