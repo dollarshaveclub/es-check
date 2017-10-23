@@ -25,7 +25,7 @@
   "devDependencies": {
     "acorn": "^5.1.2",
     "assert": "^1.4.1",
-    "codecov": "^2.3.0",
+    "codecov": "^3.0.0",
     "eslint": "^4.8.0",
     "eslint-plugin-dollarshaveclub": "^1.0.2",
     "glob": "^7.1.2",
