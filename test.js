@@ -1,3 +1,5 @@
+'use strict'
+
 const exec = require('child_process').exec
 const globby = require('globby')
 const assert = require('assert')
