@@ -28,7 +28,7 @@ prog
   ).argument(
     '[files...]',
     'a glob of files to to test the EcmaScript version against'
-  ).action((args, options,  logger) => {
+  ).action((args, options, logger) => {
     const v = args.ecmaVersion
     const files = args.files
     let e
@@ -68,35 +68,34 @@ prog
         e = '5'
     }
 
-    const errors = []
+    const errFiles = []
+    const globOpts = { nodir: true }
+    const acornOpts = { ecmaVersion: e, silent: true }
 
     files.forEach((pattern) => {
       // pattern => glob or array
-      const globbedFiles = glob.sync(pattern)
+      const globbedFiles = glob.sync(pattern, globOpts)
 
       globbedFiles.forEach((file) => {
         const code = fs.readFileSync(file, 'utf8')
         try {
-          const result = acorn.parse(code, {
-            ecmaVersion: e,
-            silent: true,
-          })
+          acorn.parse(code, acornOpts)
         } catch (err) {
-          errors.push(file)
+          logger.debug(`ES-check: Failed to parse file '${file}', got error: \n  ${err}`)
+          errFiles.push(file)
         }
       })
     })
 
-    if (errors.length > 0) {
-      logger.error(`ES-check: there were ${errors.length} ES version matching errors.`)
-      errors.forEach((error) => {
-        logger.info(`\n es-check: error in: ${error}`)
+    if (errFiles.length > 0) {
+      logger.error(`ES-check: there were ${errFiles.length} ES version matching errors.`)
+      errFiles.forEach((file) => {
+        logger.info(`\n es-check: error in: ${file}`)
       })
       process.exit(1)
-      return
     } else {
       logger.error(`ES-check: there were no ES version matching errors!  🎉`)
     }
   })
 
-prog.parse(process.argv)
+prog.parse(argsArray)
