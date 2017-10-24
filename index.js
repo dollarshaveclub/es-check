@@ -81,20 +81,20 @@ prog
         try {
           acorn.parse(code, acornOpts)
         } catch (err) {
-          logger.debug(`ES-check: Failed to parse file '${file}', got error: \n  ${err}`)
+          logger.debug(`ES-Check: failed to parse file: ${file} \n - error: ${err}`)
           errFiles.push(file)
         }
       })
     })
 
     if (errFiles.length > 0) {
-      logger.error(`ES-check: there were ${errFiles.length} ES version matching errors.`)
+      logger.error(`ES-Check: there were ${errFiles.length} ES version matching errors.`)
       errFiles.forEach((file) => {
-        logger.info(`\n es-check: error in: ${file}`)
+        logger.info(`\n ES-Check: error in: ${file}`)
       })
       process.exit(1)
     } else {
-      logger.error(`ES-check: there were no ES version matching errors!  🎉`)
+      logger.error(`ES-Check: there were no ES version matching errors!  🎉`)
     }
   })
 
