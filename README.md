@@ -53,13 +53,14 @@ Ensuring that JavaScript files can pass ES Check is important in a [modular and 
 Install
 
 ```sh
-npm i es-check --save-dev
+npm i es-check --save-dev   # locally
+npm i es-check -g           # or globally
 ```
 
 Check if an array or glob of files matches a specified ES version
 
 ```sh
-es-check check es5 ./vendor/js/*.js ./dist/**/*.js
+es-check es5 ./vendor/js/*.js ./dist/**/*.js
 ```
 
 - The ES Check script (above) checks `/dist/*.js` files to see if they're ES5. It throws an error and logs files are that do not pass the check.
@@ -95,7 +96,7 @@ Fail
 ```sh
 USAGE
 
-index.js es-check <es-checkersion> [files...]
+index.js es-check <es-version> [files...]
 ```
 
 ### Arguments
@@ -125,10 +126,10 @@ Here are some example of **es check** scripts that could be run:
 
 ```sh
 # globs
-node_modules/es-check/index.js check es5 ./js/*.js
+es-check es5 ./js/*.js
 
 # array of arguments
-node_modules/es-check/index.js check es5 ./js/*.js ./dist/*.js
+es-check es5 ./js/*.js ./dist/*.js
 ```
 
 ----
