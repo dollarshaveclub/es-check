@@ -29,7 +29,7 @@
     "codecov": "^3.0.0",
     "eslint": "^4.8.0",
     "eslint-plugin-dollarshaveclub": "^1.0.2",
-    "mocha": "^4.0.1",
+    "mocha": "^5.0.0",
     "nyc": "^11.2.1"
   },
   "dependencies": {
