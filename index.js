@@ -96,9 +96,11 @@ prog
         logger.info(`
           ES-Check Error:
           ----
-          · erroring file: ${o.file}\n
-          · error: ${o.err}\n
-          · stack: ${o.stack}
+          · erroring file: ${o.file}
+          · error: ${o.err}
+          · see the printed err.stack below for context
+          ----\n
+          ${o.stack}
         `)
       })
       process.exit(1)
