@@ -66,7 +66,7 @@ prog
         e = '5'
     }
 
-    const errFiles = []
+    const errArray = []
     const globOpts = { nodir: true }
     const acornOpts = { ecmaVersion: e, silent: true }
 
@@ -80,20 +80,29 @@ prog
           acorn.parse(code, acornOpts)
         } catch (err) {
           logger.debug(`ES-Check: failed to parse file: ${file} \n - error: ${err}`)
-          errFiles.push(file)
+          const errorObj = {
+            error: err,
+            stack: err.stack,
+            file,
+          }
+          errArray.push(errorObj)
         }
       })
     })
 
-    if (errFiles.length > 0) {
-      logger.error(`ES-Check: there were ${errFiles.length} ES version matching errors.`)
-      errFiles.forEach((file) => {
-        logger.info(`\n ES-Check: error in: ${file}`)
+    if (errArray.length > 0) {
+      logger.error(`ES-Check: there were ${errArray.length} ES version matching errors.`)
+      errArray.forEach((o) => {
+        logger.info(`
+          ----
+          · erroring file: ${o.file}\n
+          · error: ${o.err}\n
+          · stack: ${o.stack}
+        `)
       })
       process.exit(1)
-    } else {
-      logger.error(`ES-Check: there were no ES version matching errors!  🎉`)
     }
+    logger.error(`ES-Check: there were no ES version matching errors!  🎉`)
   })
 
 prog.parse(argsArray)
