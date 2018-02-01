@@ -94,6 +94,7 @@ prog
       logger.error(`ES-Check: there were ${errArray.length} ES version matching errors.`)
       errArray.forEach((o) => {
         logger.info(`
+          ES-Check Error:
           ----
           · erroring file: ${o.file}\n
           · error: ${o.err}\n
