@@ -42,6 +42,7 @@ Ensuring that JavaScript files can pass ES Check is important in a [modular and 
   <a href="#usage">Usage</a>&nbsp;&nbsp;
   <a href="#walkthrough">Walk Through</a>&nbsp;&nbsp;
   <a href="#api">API</a>&nbsp;&nbsp;
+  <a href="#debugging">Debugging</a>&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;
   <a href="/issues">Issues</a>
 </p>
@@ -126,11 +127,22 @@ Here are some example of **es check** scripts that could be run:
 
 ```sh
 # globs
-es-check es5 ./js/*.js
+es-check ./js/*.js
 
 # array of arguments
-es-check es5 ./js/*.js ./dist/*.js
+es-check ./js/*.js ./dist/*.js
 ```
+
+----
+
+## Debugging
+
+As of ES-Check version **2.0.2**, a better debugging interface is provided. When a file errors, An error object will be logged with:
+- the erroring file
+- the error
+- the error stack
+
+⚠️ **NOTE:** Error logs are from the Acorn parser while parsing JavaScript related to specific versions of ECMAScript. This means error messaging is not specific to ECMAScript version. It still offers context into parsing issues!
 
 ----
 
