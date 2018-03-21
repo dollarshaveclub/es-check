@@ -81,7 +81,7 @@ prog
         } catch (err) {
           logger.debug(`ES-Check: failed to parse file: ${file} \n - error: ${err}`)
           const errorObj = {
-            error: err,
+            err,
             stack: err.stack,
             file,
           }
