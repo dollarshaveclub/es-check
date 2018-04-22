@@ -51,16 +51,16 @@ prog
         e = '8'
         break
       case 'es2015':
-        e = '5'
-        break
-      case 'es2016':
         e = '6'
         break
-      case 'es2017':
+      case 'es2016':
         e = '7'
         break
-      case 'es2018':
+      case 'es2017':
         e = '8'
+        break
+      case 'es2018':
+        e = '9'
         break
       default:
         e = '5'
