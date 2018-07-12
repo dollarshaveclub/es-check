@@ -57,5 +57,8 @@
     "js version matching",
     "test js version",
     "test ecmascript version"
-  ]
+  ],
+  "resolutions": {
+    "eslint-scope": "3.7.1"
+  }
 }
