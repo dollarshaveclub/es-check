@@ -45,3 +45,15 @@ it('👌  Es Check should fail when checking a glob of es5 files', (done) => {
   })
 })
 
+it('👌 Es Check should read from an .escheckrc file for config', (done) => {
+  exec('node index.js', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err.stack)
+      console.error(stdout.toString())
+      console.error(stderr.toString())
+      done(err)
+      return
+    }
+    done()
+  })
+})

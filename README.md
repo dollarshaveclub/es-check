@@ -135,6 +135,19 @@ es-check ./js/*.js ./dist/*.js
 
 ----
 
+## Configuration
+
+If you're using a consistent configuration, you can create a `.escheckrc` file in JSON format with the `ecmaVersion` and `files` arguments so you can conveniently run `es-check` standalone from the command line.
+
+Here's an example of what an `.escheckrc` file will look like:
+```json
+{
+  "ecmaVersion": "es6",
+  "files": "./dist/**/*.js"
+}
+```
+⚠️ **NOTE:**: Using command line arguments while there is an `.escheckrc` file in the project directory will override the configuration values in `.escheckrc`.
+
 ## Debugging
 
 As of ES-Check version **2.0.2**, a better debugging interface is provided. When a file errors, An error object will be logged with:
