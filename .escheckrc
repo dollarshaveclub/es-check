@@ -1,0 +1,4 @@
+{
+  "ecmaVersion": "es",
+  "files": "./tests/*.js"
+}

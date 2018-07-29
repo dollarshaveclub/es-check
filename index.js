@@ -6,6 +6,7 @@ const prog = require('caporal')
 const acorn = require('acorn')
 const glob = require('glob')
 const fs = require('fs')
+const path = require('path')
 
 const pkg = require('./package.json')
 const argsArray = process.argv
@@ -21,16 +22,41 @@ const argsArray = process.argv
 prog
   .version(pkg.version)
   .argument(
-    '<ecmaVersion>',
+    '[ecmaVersion]',
     'define the EcmaScript version to check for against a glob of JavaScript files'
   ).argument(
     '[files...]',
     'a glob of files to to test the EcmaScript version against'
   ).action((args, options, logger) => {
-    const v = args.ecmaVersion
-    const files = args.files
-    let e
+
+    const configFilePath = path.resolve(process.cwd(), '.escheckrc')
+
+    let v, files
+    let config = {}
+
+    // Check for a configuration file. If one exists, default to those options
+    // if no command line arguments are passed in
+    if (fs.existsSync(configFilePath)) {
+      config = JSON.parse(fs.readFileSync(configFilePath))
+    }
+
+    v = args.ecmaVersion
+      ? args.ecmaVersion
+      : config.ecmaVersion
+
+    files = args.files
+      ? args.files
+      : config.files
+
+    if (!v) {
+      logger.error(
+        'No ecmaScript version passed in or found in .escheckrc. Please set your ecmaScript version in the CLI or in .escheckrc'
+      )
+      process.exit(1)
+    }
+
     // define ecmaScript version
+    let e = '5' // Default ecmaScript version is '5'
     switch (v) {
       case 'es3':
         e = '3'
@@ -62,8 +88,6 @@ prog
       case 'es2018':
         e = '9'
         break
-      default:
-        e = '5'
     }
 
     const errArray = []
