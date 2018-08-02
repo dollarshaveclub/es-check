@@ -11,13 +11,13 @@ const path = require('path')
 const pkg = require('./package.json')
 const argsArray = process.argv
 
-/*
-  es-check 🏆
-  ----
-  - define the EcmaScript version to check for against a glob of JavaScript files
-  - match the EcmaScript version option against a glob of files
-    to to test the EcmaScript version of each file
-  - error failures
+/**
+ * es-check 🏆
+ * ----
+ * - define the EcmaScript version to check for against a glob of JavaScript files
+ * - match the EcmaScript version option against a glob of files
+ *   to to test the EcmaScript version of each file
+ * - error failures
 */
 prog
   .version(pkg.version)
@@ -31,11 +31,13 @@ prog
 
     const configFilePath = path.resolve(process.cwd(), '.escheckrc')
 
-    let v, files
+    let v, files, e
     let config = {}
 
-    // Check for a configuration file. If one exists, default to those options
-    // if no command line arguments are passed in
+    /**
+     * Check for a configuration file. If one exists, default to those options
+     * if no command line arguments are passed in
+     */
     if (fs.existsSync(configFilePath)) {
       config = JSON.parse(fs.readFileSync(configFilePath))
     }
@@ -55,8 +57,10 @@ prog
       process.exit(1)
     }
 
-    // define ecmaScript version
-    let e = '5' // Default ecmaScript version is '5'
+    /**
+     * define ecmaScript version
+     * - Default ecmaScript version is '5'
+     */
     switch (v) {
       case 'es3':
         e = '3'
@@ -88,6 +92,8 @@ prog
       case 'es2018':
         e = '9'
         break
+      default:
+        e = '5'
     }
 
     const errArray = []
@@ -95,7 +101,9 @@ prog
     const acornOpts = { ecmaVersion: e, silent: true }
 
     files.forEach((pattern) => {
-      // pattern => glob or array
+      /**
+       * pattern => glob or array
+       */
       const globbedFiles = glob.sync(pattern, globOpts)
 
       globbedFiles.forEach((file) => {
