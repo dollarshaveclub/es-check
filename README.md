@@ -54,14 +54,18 @@ Ensuring that JavaScript files can pass ES Check is important in a [modular and 
 Install
 
 ```sh
+
 npm i es-check --save-dev   # locally
 npm i es-check -g           # or globally
+
 ```
 
 Check if an array or glob of files matches a specified ES version
 
 ```sh
+
 es-check es5 ./vendor/js/*.js ./dist/**/*.js
+
 ```
 
 - The ES Check script (above) checks `/dist/*.js` files to see if they're ES5. It throws an error and logs files are that do not pass the check.
@@ -95,26 +99,32 @@ Fail
 ### General Information
 
 ```sh
-USAGE
+
+# USAGE
 
 index.js es-check <es-version> [files...]
+
 ```
 
 ### Arguments
 
 ```sh
+
 <ecmaVersion> 'define the ECMAScript version to check for against a glob of JavaScript files' required
 [files...] 'a glob of files to test the ECMAScript version against' required
+
 ```
 
 ### Global Options
 
 ```sh
+
 -h, --help         Display help
 -V, --version      Display version
 --no-color         Disable colors
 --quiet            Quiet mode - only displays warn and error messages
 -v, --verbose      Verbose mode - will also output debug messages
+
 ```
 
 ----
@@ -140,17 +150,20 @@ es-check ./js/*.js ./dist/*.js
 If you're using a consistent configuration, you can create a `.escheckrc` file in JSON format with the `ecmaVersion` and `files` arguments so you can conveniently run `es-check` standalone from the command line.
 
 Here's an example of what an `.escheckrc` file will look like:
+
 ```json
 {
   "ecmaVersion": "es6",
   "files": "./dist/**/*.js"
 }
 ```
-⚠️ **NOTE:**: Using command line arguments while there is an `.escheckrc` file in the project directory will override the configuration values in `.escheckrc`.
+
+⚠️ **NOTE:** Using command line arguments while there is an `.escheckrc` file in the project directory will override the configuration values in `.escheckrc`.
 
 ## Debugging
 
 As of ES-Check version **2.0.2**, a better debugging interface is provided. When a file errors, An error object will be logged with:
+
 - the erroring file
 - the error
 - the error stack
@@ -171,9 +184,8 @@ ES Check has 3 main dependencies: [acorn](https://github.com/ternjs/acorn/), [gl
 
 ### Contributors
 
--  [Jeff Wainwright](https://github.com/yowainwright/)
--  [Brian Gonzalez](https://github.com/briangonzalez/)
--  [Jon Ong](https://github.com/jonathanong/)
--  [Suhas Karanth](https://github.com/sudo-suhas)
-
-
+- [Jeff Wainwright](https://github.com/yowainwright/)
+- [Brian Gonzalez](https://github.com/briangonzalez/)
+- [Jon Ong](https://github.com/jonathanong/)
+- [Suhas Karanth](https://github.com/sudo-suhas)
+- [Ben Junya](https://github.com/MrBenJ)
