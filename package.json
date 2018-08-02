@@ -1,6 +1,6 @@
 {
   "name": "es-check",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Checks the EcamScript version of .js glob against a specified version of EcamScript with a shell command",
   "main": "index.js",
   "files": [
@@ -11,6 +11,7 @@
   },
   "scripts": {
     "lint": "eslint index.js --fix",
+    "lint:ci": "eslint index.js",
     "report:coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "test": "nyc mocha test.js --timeout 10s --coverage"
   },
