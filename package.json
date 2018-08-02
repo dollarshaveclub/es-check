@@ -17,6 +17,7 @@
     "chore": "npm run chore:delete-branch && npm run chore:branch && npm run chore:changelog && npm run chore:pr",
     "lint": "eslint index.js --fix",
     "lint:ci": "eslint index.js",
+    "prepush": "npm run eslint && npm test",
     "postpublish": "git tag $npm_package_version && git push origin --tags && npm run chore",
     "report:coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "test": "nyc mocha test.js --timeout 10s --coverage"
@@ -37,6 +38,7 @@
     "conventional-changelog-cli": "^2.0.1",
     "eslint": "^5.0.0",
     "eslint-plugin-dollarshaveclub": "^1.0.2",
+    "husky": "^0.14.3",
     "mocha": "^5.0.0",
     "nyc": "^12.0.1"
   },
