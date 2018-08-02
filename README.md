@@ -146,7 +146,7 @@ Here's an example of what an `.escheckrc` file will look like:
   "files": "./dist/**/*.js"
 }
 ```
-⚠️ **NOTE:**: Using command line arguments while there is an `.escheckrc` file in the project directory will override the configuration values in `.escheckrc`.
+⚠️ **NOTE:** Using command line arguments while there is an `.escheckrc` file in the project directory will override the configuration values in `.escheckrc`.
 
 ## Debugging
 
@@ -175,5 +175,4 @@ ES Check has 3 main dependencies: [acorn](https://github.com/ternjs/acorn/), [gl
 -  [Brian Gonzalez](https://github.com/briangonzalez/)
 -  [Jon Ong](https://github.com/jonathanong/)
 -  [Suhas Karanth](https://github.com/sudo-suhas)
-
-
+- [Ben Junya](https://github.com/MrBenJ)
