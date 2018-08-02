@@ -17,7 +17,7 @@
     "chore": "npm run chore:delete-branch && npm run chore:branch && npm run chore:changelog && npm run chore:pr",
     "lint": "eslint index.js --fix",
     "lint:ci": "eslint index.js",
-    "prepush": "npm run eslint && npm test",
+    "prepush": "npm run lint && npm test",
     "postpublish": "git tag $npm_package_version && git push origin --tags && npm run chore",
     "report:coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "test": "nyc mocha test.js --timeout 10s --coverage"
