@@ -115,6 +115,12 @@ index.js es-check <es-version> [files...]
 
 ```
 
+### Options
+
+```sh
+--module <true|false>   uses ES modules, default false
+```
+
 ### Global Options
 
 ```sh
@@ -154,6 +160,7 @@ Here's an example of what an `.escheckrc` file will look like:
 ```json
 {
   "ecmaVersion": "es6",
+  "module": false,
   "files": "./dist/**/*.js"
 }
 ```

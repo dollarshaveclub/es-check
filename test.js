@@ -45,6 +45,27 @@ it('👌  Es Check should fail when checking a glob of es5 files', (done) => {
   })
 })
 
+it('👌  Es Check should fail when checking a glob of es6 modules without --module true', (done) => {
+  exec('node index.js es6 ./tests/modules/*.js', (err, stdout, stderr) => {
+    assert(err)
+    console.log(stdout)
+    done()
+  })
+})
+
+it('🎉  Es Check should pass when checking a glob of es6 modules using the --module true flag', (done) => {
+  exec('node index.js --module true es6 ./tests/modules/*.js', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err.stack)
+      console.error(stdout.toString())
+      console.error(stderr.toString())
+      done(err)
+      return
+    }
+    done()
+  })
+})
+
 it('👌 Es Check should read from an .escheckrc file for config', (done) => {
   exec('node index.js', (err, stdout, stderr) => {
     if (err) {

@@ -21,6 +21,7 @@ const argsArray = process.argv
 */
 prog
   .version(pkg.version)
+  .option('--module <true|false>', 'uses ES modules, default false', prog.BOOL)
   .argument(
     '[ecmaVersion]',
     'define the EcmaScript version to check for against a glob of JavaScript files'
@@ -31,7 +32,7 @@ prog
 
     const configFilePath = path.resolve(process.cwd(), '.escheckrc')
 
-    let v, files, e
+    let v, files, e, esmodule
     let config = {}
 
     /**
@@ -49,6 +50,10 @@ prog
     files = args.files
       ? args.files
       : config.files
+
+    esmodule = options.module 
+      ? options.module
+      : config.module
 
     if (!v) {
       logger.error(
@@ -99,6 +104,7 @@ prog
     const errArray = []
     const globOpts = { nodir: true }
     const acornOpts = { ecmaVersion: e, silent: true }
+    if (esmodule) { acornOpts.sourceType = 'module'}
 
     files.forEach((pattern) => {
       /**
