@@ -196,3 +196,4 @@ ES Check has 3 main dependencies: [acorn](https://github.com/ternjs/acorn/), [gl
 - [Jon Ong](https://github.com/jonathanong/)
 - [Suhas Karanth](https://github.com/sudo-suhas)
 - [Ben Junya](https://github.com/MrBenJ)
+- [Jeff Barczewski](https://github.com/jeffbski)
