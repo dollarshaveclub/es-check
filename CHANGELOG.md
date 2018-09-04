@@ -1,3 +1,8 @@
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/dollarshaveclub/es-check/compare/2.1.0...2.2.0) (2018-09-04)
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/dollarshaveclub/es-check/compare/270ed6c...2.1.0) (2018-08-02)
 
