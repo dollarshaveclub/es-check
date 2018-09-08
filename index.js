@@ -106,7 +106,7 @@ prog
     const acornOpts = { ecmaVersion: e, silent: true }
     if (esmodule) { acornOpts.sourceType = 'module'}
 
-    logger.debug(`ES-Check: Going to check files using version ${e} with module = ${esmodule || 'false'}`)
+    logger.debug(`ES-Check: Going to check files using version ${e}${esmodule ? ' with esmodule set' : ''}`)
 
     files.forEach((pattern) => {
       /**
@@ -117,7 +117,7 @@ prog
       globbedFiles.forEach((file) => {
         const code = fs.readFileSync(file, 'utf8')
 
-        logger.debug(`ES-Check: checking ${file} `)
+        logger.debug(`ES-Check: checking ${file}`)
         try {
           acorn.parse(code, acornOpts)
         } catch (err) {
