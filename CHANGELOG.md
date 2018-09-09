@@ -1,3 +1,13 @@
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/dollarshaveclub/es-check/compare/2.2.0...2.3.0) (2018-09-09)
+
+
+### Features
+
+* log version, module, and files ([#59](https://github.com/dollarshaveclub/es-check/issues/59)) ([3de6d31](https://github.com/dollarshaveclub/es-check/commit/3de6d31))
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/dollarshaveclub/es-check/compare/2.1.0...2.2.0) (2018-09-04)
 
