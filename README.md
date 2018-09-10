@@ -30,6 +30,10 @@
 
 <h1 align="center">ES Check ✔️</h1>
 
+**Version 3** release! 🎉 Thanks to @BrandonOCasey. Adds 2 new features:
+- ES Check fails if no files are matched (breaking—if the ES Check script is not mapped correctly)
+- Supports files that start with hashbang.
+
 **ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.
 
 Ensuring that JavaScript files can pass ES Check is important in a [modular and bundled](https://www.sitepoint.com/javascript-modules-bundling-transpiling/) world. Read more about [why](#why).
@@ -38,9 +42,9 @@ Ensuring that JavaScript files can pass ES Check is important in a [modular and 
 
 <p align="center">
   <a href="#get-started">Get Started</a>&nbsp;&nbsp;
-  <a href="#why">Why ES Check?</a>&nbsp;&nbsp;
+  <a href="#why-es-check">Why ES Check?</a>&nbsp;&nbsp;
   <a href="#usage">Usage</a>&nbsp;&nbsp;
-  <a href="#walkthrough">Walk Through</a>&nbsp;&nbsp;
+  <a href="#walk-through">Walk Through</a>&nbsp;&nbsp;
   <a href="#api">API</a>&nbsp;&nbsp;
   <a href="#debugging">Debugging</a>&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;
@@ -60,11 +64,13 @@ npm i es-check -g           # or globally
 
 ```
 
-Check if an array or glob of files matches a specified ES version
+Check if an array or glob of files matches a specified ES version.
+
+- **Note:** adds quotation around globs. Globs are patterns like so, `<something>/*.js`.
 
 ```sh
 
-es-check es5 ./vendor/js/*.js ./dist/**/*.js
+es-check es5 './vendor/js/*.js' './dist/**/*.js'
 
 ```
 
@@ -72,13 +78,13 @@ es-check es5 ./vendor/js/*.js ./dist/**/*.js
 
 ----
 
-<h2 id="why">Why ES Check?</h2>
+## Why ES Check?
 
 In modern JavaScript builds, files are bundled up so they can be served in an optimized manner in the browsers. It is assumed by developers that future JavaScript—like ES8 will be transpiled (changed from future JavaScript to current JavaScript) appropriately by a tool like Babel. Sometimes there is an issue where files are not transpiled. There was no efficient way to test for files that weren't transpiled—until now. That's what ES Check does.
 
 ----
 
-<h2 id="walkthrough">Walk through</h2>
+# >Walk through
 
 The images below demonstrate command line scripts and their corresponding logged results.
 
@@ -117,8 +123,20 @@ index.js es-check <es-version> [files...]
 
 ### Options
 
+**Modules Flag**
+
 ```sh
+
 --module <true|false>   uses ES modules, default false
+
+```
+
+**Allow Hash Bang**
+
+```sh
+
+--allowHashBang <true|false>   supports files that start with hash bang, default false
+
 ```
 
 ### Global Options
@@ -197,3 +215,4 @@ ES Check has 3 main dependencies: [acorn](https://github.com/ternjs/acorn/), [gl
 - [Suhas Karanth](https://github.com/sudo-suhas)
 - [Ben Junya](https://github.com/MrBenJ)
 - [Jeff Barczewski](https://github.com/jeffbski)
+- [Brandon Casey](https://github.com/BrandonOCasey)
