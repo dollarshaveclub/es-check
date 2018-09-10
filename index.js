@@ -22,6 +22,7 @@ const argsArray = process.argv
 prog
   .version(pkg.version)
   .option('--module <true|false>', 'uses ES modules, default false', prog.BOOL)
+  .option('--allow-hash-bang <true|false>', 'if the code starts with #! treat it as a comment', prog.BOOL)
   .argument(
     '[ecmaVersion]',
     'define the EcmaScript version to check for against a glob of JavaScript files'
@@ -32,7 +33,7 @@ prog
 
     const configFilePath = path.resolve(process.cwd(), '.escheckrc')
 
-    let v, files, e, esmodule
+    let v, files, e, esmodule, allowHashBang
     let config = {}
 
     /**
@@ -54,6 +55,10 @@ prog
     esmodule = options.module 
       ? options.module
       : config.module
+
+    allowHashBang = options.allowHashBang
+      ? options.allowHashBang
+      : config.allowHashBang
 
     if (!v) {
       logger.error(
@@ -104,9 +109,18 @@ prog
     const errArray = []
     const globOpts = { nodir: true }
     const acornOpts = { ecmaVersion: e, silent: true }
-    if (esmodule) { acornOpts.sourceType = 'module'}
 
-    logger.debug(`ES-Check: Going to check files using version ${e}${esmodule ? ' with esmodule set' : ''}`)
+    logger.debug(`ES-Check: Going to check files using version ${e}`)
+
+    if (esmodule) {
+      acornOpts.sourceType = 'module'
+      logger.debug('ES-Check: esmodule is set')
+    }
+
+    if (allowHashBang) {
+      acornOpts.allowHashBang = true
+      logger.debug('ES-Check: allowHashBang is set')
+    }
 
     files.forEach((pattern) => {
       /**

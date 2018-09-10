@@ -16,6 +16,19 @@ it('🎉  Es Check should pass when checking an array of es5 files as es5', (don
   })
 })
 
+it('🎉  Es Check should pass when checking a file with a hash bang', (done) => {
+  exec('node index.js --allow-hash-bang true es6 index.js', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err.stack)
+      console.error(stdout.toString())
+      console.error(stderr.toString())
+      done(err)
+      return
+    }
+    done()
+  })
+})
+
 it('👌  Es Check should fail when checking an array of es6 files as es5', (done) => {
   exec('node index.js es5 ./tests/es6.js ./tests/es6-2.js', (err, stdout, stderr) => {
     assert(err)
