@@ -114,6 +114,11 @@ prog
        */
       const globbedFiles = glob.sync(pattern, globOpts)
 
+      if (globbedFiles.length === 0) {
+        logger.error(`ES-Check: Did not find any files to check for ${pattern}.`)
+        process.exit(1);
+      }
+
       globbedFiles.forEach((file) => {
         const code = fs.readFileSync(file, 'utf8')
 
