@@ -1,3 +1,18 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/dollarshaveclub/es-check/compare/2.3.0...3.0.0) (2018-09-10)
+
+
+### Bug Fixes
+
+* should exit with an error if no files were checked ([#58](https://github.com/dollarshaveclub/es-check/issues/58)) ([8e8d61f](https://github.com/dollarshaveclub/es-check/commit/8e8d61f))
+
+
+### Features
+
+* support files that start with hash bang ([#62](https://github.com/dollarshaveclub/es-check/issues/62)) ([06b412c](https://github.com/dollarshaveclub/es-check/commit/06b412c))
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/dollarshaveclub/es-check/compare/2.2.0...2.3.0) (2018-09-09)
 
