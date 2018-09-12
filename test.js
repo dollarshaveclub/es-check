@@ -50,6 +50,14 @@ it('🎉  Es Check should pass when checking a glob of es6 files ', (done) => {
   })
 })
 
+it('👌  Es Check fails when give an invalid version', (done) => {
+  exec('node index.js foo "./tests/*.js"', (err, stdout, stderr) => {
+    assert(err)
+    console.log(stdout)
+    done()
+  })
+})
+
 it('👌  Es Check should fail when checking a glob of es5 files', (done) => {
   exec('node index.js es5 ./tests/*.js', (err, stdout, stderr) => {
     assert(err)

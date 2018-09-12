@@ -25,7 +25,7 @@ prog
   .option('--allow-hash-bang <true|false>', 'if the code starts with #! treat it as a comment', prog.BOOL)
   .argument(
     '[ecmaVersion]',
-    'define the EcmaScript version to check for against a glob of JavaScript files'
+    'ecmaVersion to check files against. Can be: es3, es4, es5, es6/es2015, es7/es2016, es8/es2017, es9/es2018, es10/es2019'
   ).argument(
     '[files...]',
     'a glob of files to to test the EcmaScript version against'
@@ -52,7 +52,7 @@ prog
       ? args.files
       : config.files
 
-    esmodule = options.module 
+    esmodule = options.module
       ? options.module
       : config.module
 
@@ -90,6 +90,12 @@ prog
       case 'es8':
         e = '8'
         break
+      case 'es9':
+        e = '9'
+        break
+      case 'es10':
+        e = '10'
+        break
       case 'es2015':
         e = '6'
         break
@@ -102,8 +108,12 @@ prog
       case 'es2018':
         e = '9'
         break
+      case 'es2019':
+        e = '10'
+        break
       default:
-        e = '5'
+        logger.error('Invalid ecmaScript version, please pass a valid version, use --help for help');
+        process.exit(1);
     }
 
     const errArray = []
