@@ -30,8 +30,10 @@
 
 <h1 align="center">ES Check ✔️</h1>
 
-**Version 3** release! 🎉 Thanks to @BrandonOCasey. Adds 2 new features:
-- ES Check fails if no files are matched (breaking—if the ES Check script is not mapped correctly)
+**Version 3 & 4** releases! 🎉 Thanks to [@BrandonOCasey](https://github.com/brandonocasey) and [@AlexandreBonneau](https://github.com/AlexandreBonneau). Adds 3 new features:
+
+- ES Check fails if no files are matched (breaking—**only** if the ES Check script is not mapped correctly)
+- ES Check fails if no ES version is matched (breaking—**only** if the ES version argument is not passed in correctly into the ES Check script)
 - Supports files that start with hashbang.
 
 **ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.
