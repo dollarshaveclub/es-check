@@ -1,3 +1,13 @@
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/dollarshaveclub/es-check/compare/3.0.0...4.0.0) (2018-09-13)
+
+
+### Bug Fixes
+
+* exit on an invalid es version ([#67](https://github.com/dollarshaveclub/es-check/issues/67)) ([37bf919](https://github.com/dollarshaveclub/es-check/commit/37bf919))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/dollarshaveclub/es-check/compare/2.3.0...3.0.0) (2018-09-10)
 
