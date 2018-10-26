@@ -129,7 +129,7 @@ index.js es-check <es-version> [files...]
 
 ```sh
 
---module <true|false>   uses ES modules, default false
+--module use ES modules, default false
 
 ```
 
@@ -137,7 +137,7 @@ index.js es-check <es-version> [files...]
 
 ```sh
 
---allowHashBang <true|false>   supports files that start with hash bang, default false
+--allowHashBang  supports files that start with hash bang, default false
 
 ```
 
