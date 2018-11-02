@@ -35,7 +35,7 @@
   "devDependencies": {
     "assert": "^1.4.1",
     "codecov": "^3.0.0",
-    "conventional-changelog-cli": "^2.0.1",
+    "conventional-changelog-cli": "^2.0.11",
     "eslint": "^5.0.0",
     "eslint-plugin-dollarshaveclub": "^1.0.2",
     "husky": "^1.0.0",
