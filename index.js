@@ -21,15 +21,16 @@ const argsArray = process.argv
 */
 prog
   .version(pkg.version)
-  .option('--module <true|false>', 'uses ES modules, default false', prog.BOOL)
-  .option('--allow-hash-bang <true|false>', 'if the code starts with #! treat it as a comment', prog.BOOL)
   .argument(
     '[ecmaVersion]',
     'ecmaVersion to check files against. Can be: es3, es4, es5, es6/es2015, es7/es2016, es8/es2017, es9/es2018, es10/es2019'
   ).argument(
     '[files...]',
     'a glob of files to to test the EcmaScript version against'
-  ).action((args, options, logger) => {
+  )
+  .option('--module', 'use ES modules')
+  .option('--allow-hash-bang', 'if the code starts with #! treat it as a comment')
+  .action((args, options, logger) => {
 
     const configFilePath = path.resolve(process.cwd(), '.escheckrc')
 
@@ -48,9 +49,9 @@ prog
       ? args.ecmaVersion
       : config.ecmaVersion
 
-    files = args.files
+    files = args.files.length
       ? args.files
-      : config.files
+      : [].concat(config.files)
 
     esmodule = options.module
       ? options.module
@@ -65,6 +66,14 @@ prog
         'No ecmaScript version passed in or found in .escheckrc. Please set your ecmaScript version in the CLI or in .escheckrc'
       )
       process.exit(1)
+    }
+
+    if (!files || !files.length) {
+      logger.error(
+        'No files were passed in please pass in a list of files to es-check!'
+      )
+      process.exit(1)
+
     }
 
     /**

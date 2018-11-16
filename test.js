@@ -17,7 +17,7 @@ it('🎉  Es Check should pass when checking an array of es5 files as es5', (don
 })
 
 it('🎉  Es Check should pass when checking a file with a hash bang', (done) => {
-  exec('node index.js --allow-hash-bang true es6 index.js', (err, stdout, stderr) => {
+  exec('node index.js es6 index.js --allow-hash-bang', (err, stdout, stderr) => {
     if (err) {
       console.error(err.stack)
       console.error(stdout.toString())
@@ -82,7 +82,7 @@ it('👌  Es Check should fail when given a glob that matches files and a glob t
   })
 })
 
-it('👌  Es Check should fail when checking a glob of es6 modules without --module true', (done) => {
+it('👌  Es Check should fail when checking a glob of es6 modules without --module flag', (done) => {
   exec('node index.js es6 ./tests/modules/*.js', (err, stdout, stderr) => {
     assert(err)
     console.log(stdout)
@@ -90,8 +90,8 @@ it('👌  Es Check should fail when checking a glob of es6 modules without --mod
   })
 })
 
-it('🎉  Es Check should pass when checking a glob of es6 modules using the --module true flag', (done) => {
-  exec('node index.js --module true es6 ./tests/modules/*.js', (err, stdout, stderr) => {
+it('🎉  Es Check should pass when checking a glob of es6 modules using the --module flag', (done) => {
+  exec('node index.js es6 ./tests/modules/*.js --module', (err, stdout, stderr) => {
     if (err) {
       console.error(err.stack)
       console.error(stdout.toString())
