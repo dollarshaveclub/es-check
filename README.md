@@ -30,11 +30,29 @@
 
 <h1 align="center">ES Check ✔️</h1>
 
-**Version 3 & 4** releases! 🎉 Thanks to [@BrandonOCasey](https://github.com/brandonocasey) and [@AlexandreBonneau](https://github.com/AlexandreBonneau). Adds 3 new features:
+**Version 5** release! 🎉 Thanks to [@BrandonOCasey](https://github.com/brandonocasey).
+Removes need for `boolean` in argument; post [Caporal **1.1.0**](https://github.com/mattallty/Caporal.js/commit/ae5d2c3cc1acef1b89a13608033b250fa7750c4e).
+This will require an update for any boolean cli flags, in example `--module`, `--allowHashBang`.
 
-- ES Check fails if no files are matched (breaking—**only** if the ES Check script is not mapped correctly)
-- ES Check fails if no ES version is matched (breaking—**only** if the ES version argument is not passed in correctly into the ES Check script)
-- Supports files that start with hashbang.
+Example of CLI boolean flag in previous versions (Versions 0-4.*)
+
+```sh
+
+// the "true" argument was required
+es-check --module true es6 ./tests/modules/*.js'
+
+```
+
+Now, with Version 5
+
+```sh
+
+// the "true" argument must be removed if used
+es-check --module es6 ./tests/modules/*.js'
+
+```
+
+----
 
 **ES Check** checks JavaScript files against a specified version of ECMAScript (ES) with a shell command. If a specified file's ES version doesn't match the ES version argument passed in the ES Check command, ES Check will throw an error and log the files that didn't match the check.
 
@@ -86,7 +104,7 @@ In modern JavaScript builds, files are bundled up so they can be served in an op
 
 ----
 
-# >Walk through
+## Walk through
 
 The images below demonstrate command line scripts and their corresponding logged results.
 
