@@ -128,7 +128,7 @@ Fail
 
 # USAGE
 
-index.js es-check <es-version> [files...]
+index.js es-check <ecmaVersion> [files...]
 
 ```
 
