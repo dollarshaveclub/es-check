@@ -159,6 +159,11 @@ index.js es-check <ecmaVersion> [files...]
 
 ```
 
+**Not**
+```sh
+--not=folderName1,folderName2 An array of file/folder names that you would like to ignore. Defaults to `[]`.
+```
+
 ### Global Options
 
 ```sh

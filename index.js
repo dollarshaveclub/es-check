@@ -30,11 +30,12 @@ prog
   )
   .option('--module', 'use ES modules')
   .option('--allow-hash-bang', 'if the code starts with #! treat it as a comment')
+  .option('--not', 'folder or file names to skip', prog.LIST)
   .action((args, options, logger) => {
 
     const configFilePath = path.resolve(process.cwd(), '.escheckrc')
 
-    let v, files, e, esmodule, allowHashBang
+    let v, files, e, esmodule, allowHashBang, pathsToIgnore
     let config = {}
 
     /**
@@ -60,6 +61,10 @@ prog
     allowHashBang = options.allowHashBang
       ? options.allowHashBang
       : config.allowHashBang
+
+    pathsToIgnore = options.not
+      ? options.not
+      : config.not
 
     if (!v) {
       logger.error(
@@ -128,6 +133,14 @@ prog
     const errArray = []
     const globOpts = { nodir: true }
     const acornOpts = { ecmaVersion: e, silent: true }
+    const filterForIgnore = (globbedFiles) => {
+      if (pathsToIgnore && pathsToIgnore.length > 0) {
+        const filtered = globbedFiles.filter((filePath) => !pathsToIgnore
+          .some(ignoreValue => filePath.includes(ignoreValue)))
+        return filtered;
+      }
+      return globbedFiles;
+    }
 
     logger.debug(`ES-Check: Going to check files using version ${e}`)
 
@@ -152,7 +165,9 @@ prog
         process.exit(1);
       }
 
-      globbedFiles.forEach((file) => {
+      const filteredFiles = filterForIgnore(globbedFiles);
+
+      filteredFiles.forEach((file) => {
         const code = fs.readFileSync(file, 'utf8')
 
         logger.debug(`ES-Check: checking ${file}`)
