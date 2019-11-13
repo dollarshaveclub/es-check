@@ -115,3 +115,16 @@ it('👌 Es Check should read from an .escheckrc file for config', (done) => {
     done()
   })
 })
+
+it('👌  Es Check skips versions included in the not flag', (done) => {
+  exec('node index.js es6 ./tests/*/*.js --module --not=skipped,passed', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err.stack)
+      console.error(stdout.toString())
+      console.error(stderr.toString())
+      done(err)
+      return
+    }
+    done()
+  });
+});
