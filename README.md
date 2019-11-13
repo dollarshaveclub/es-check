@@ -32,7 +32,7 @@
 
 **Version 5** release! 🎉 Thanks to [@BrandonOCasey](https://github.com/brandonocasey).
 Removes need for `boolean` in argument; post [Caporal **1.1.0**](https://github.com/mattallty/Caporal.js/commit/ae5d2c3cc1acef1b89a13608033b250fa7750c4e).
-This will require an update for any boolean cli flags, in example `--module`, `--allowHashBang`.
+This will require an update for any boolean cli flags, in example `--module`, `--allow-hash-bang`.
 
 Example of CLI boolean flag in previous versions (Versions 0-4.*)
 
@@ -155,7 +155,7 @@ index.js es-check <ecmaVersion> [files...]
 
 ```sh
 
---allowHashBang  supports files that start with hash bang, default false
+--allow-hash-bang supports files that start with hash bang, default false
 
 ```
 
