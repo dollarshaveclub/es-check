@@ -7,6 +7,7 @@ const acorn = require('acorn')
 const glob = require('glob')
 const fs = require('fs')
 const path = require('path')
+const { printSourceCodeInfo } = require('source-map-to-code')
 
 const pkg = require('./package.json')
 const argsArray = process.argv
@@ -188,19 +189,24 @@ prog
     if (errArray.length > 0) {
       logger.error(`ES-Check: there were ${errArray.length} ES version matching errors.`)
       errArray.forEach((o) => {
-        logger.info(`
-          ES-Check Error:
-          ----
-          · erroring file: ${o.file}
-          · error: ${o.err}
-          · see the printed err.stack below for context
-          ----\n
-          ${o.stack}
-        `)
+        printSourceCodeInfo({
+          filePath: o.file,
+          position: o.err.loc
+        }, logger.info).then(() => {
+          logger.info(`
+            ES-Check Error:
+            ----
+            · erroring file: ${o.file}
+            · error: ${o.err}
+            · see the printed err.stack below for context
+            ----\n
+            ${o.stack}
+          `)
+        })
       })
-      process.exit(1)
+    } else {
+      logger.error(`ES-Check: there were no ES version matching errors!  🎉`)
     }
-    logger.error(`ES-Check: there were no ES version matching errors!  🎉`)
   })
 
 prog.parse(argsArray)
