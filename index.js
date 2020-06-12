@@ -188,21 +188,21 @@ prog
 
     if (errArray.length > 0) {
       logger.error(`ES-Check: there were ${errArray.length} ES version matching errors.`)
-      errArray.forEach((o) => {
-        printSourceCodeInfo({
-          filePath: o.file,
-          position: o.err.loc
-        }, logger.info).then(() => {
-          logger.info(`
-            ES-Check Error:
-            ----
-            · erroring file: ${o.file}
-            · error: ${o.err}
-            · see the printed err.stack below for context
-            ----\n
-            ${o.stack}
-          `)
-        })
+      Promise.all(errArray.map(o => printSourceCodeInfo({
+        filePath: o.file,
+        position: o.err.loc
+      }, logger.info).then(() => {
+        logger.info(`
+ES-Check Error:
+----
+· erroring file: ${o.file}
+· error: ${o.err}
+· see the printed err.stack below for context
+----\n
+          ${o.stack}
+        `)
+      }))).then(() => {
+        process.exit(1)
       })
     } else {
       logger.error(`ES-Check: there were no ES version matching errors!  🎉`)

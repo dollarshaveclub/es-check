@@ -46,7 +46,7 @@
     "acorn": "6.1.1",
     "caporal": "1.3.0",
     "glob": "^7.1.2",
-    "source-map-to-code": "1.0.0"
+    "source-map-to-code": "1.0.4"
   },
   "engines": {
     "node": ">= 4"
