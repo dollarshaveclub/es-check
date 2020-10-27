@@ -1,3 +1,13 @@
+<p align="center">⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️</p>
+<p align="center">
+  <strong>
+    This software is maintained under a new repository located at <a href="https://github.com/yowainwright/es-check">yowainwright/es-check</a>
+  </strong>
+</p>
+<p align="center">⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️</p>
+
+***
+
 <p align="center">
   <img src="https://yowainwright.imgix.net/gh/es-check.svg" alt="ES Check ✔️" width="120" />
 </p>
