@@ -128,3 +128,12 @@ it('👌  Es Check skips versions included in the not flag', (done) => {
     done()
   });
 });
+
+it('🎉  Es Check does not output anything in --quiet mode', (done) => {
+  exec('node index.js --quiet es5 ./tests/es5.js', (err, stdout, stderr) => {
+    assert.equal(err, null)
+    assert.equal(stdout, '')
+    assert.equal(stderr, '')
+    done()
+  })
+})

@@ -29,6 +29,7 @@ prog
     'a glob of files to to test the EcmaScript version against'
   )
   .option('--module', 'use ES modules')
+  .option('--quiet', 'Quiet mode - only displays warn and error messages')
   .option('--allow-hash-bang', 'if the code starts with #! treat it as a comment')
   .option('--not', 'folder or file names to skip', prog.LIST)
   .action((args, options, logger) => {
@@ -78,7 +79,6 @@ prog
         'No files were passed in please pass in a list of files to es-check!'
       )
       process.exit(1)
-
     }
 
     /**
@@ -200,7 +200,9 @@ prog
       })
       process.exit(1)
     }
-    logger.error(`ES-Check: there were no ES version matching errors!  🎉`)
+    if (!options.quiet) {
+      logger.error(`ES-Check: there were no ES version matching errors!  🎉`)
+    }
   })
 
 prog.parse(argsArray)
